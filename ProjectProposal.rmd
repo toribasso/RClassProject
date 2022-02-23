@@ -5,7 +5,7 @@
 
 I would like to investigate the relationship between 
 wages from 1972 to 2020 in relation to the Consumer
-Price Index (CPI). 
+Price Index (CPI) that is used to estimate inflation.
 
 ### Process of Proposal
 
