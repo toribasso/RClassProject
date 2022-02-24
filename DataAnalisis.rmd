@@ -1,0 +1,41 @@
+#Data Analysis
+
+## Importing Data
+
+```{r Import, message=FALSE}
+library(readxl)
+DatasetForRProject <- read_excel("DatasetForRProject.xlsx")
+View(DatasetForRProject)
+```
+
+## Descriptive Statistics
+
+```{r DescriptiveStat, message=FALSE}
+summary(DatasetForRProject)
+```
+
+The General Average Wage has much higher measures of spread than median measures of spread.
+This may indicate that there are large outliers influencing the average wage to be higher.
+If we look at wages-by-degree, it seems like having a degree is much more helpful for wages than
+not having a degree.
+
+```{r LineGraphs, message=FALSE}
+library(ggplot2)
+ggplot(data=DatasetForRProject, aes(x=Year, y=GeneralMedianWage, group=1)) +
+  geom_line()+
+  geom_point()
+ggplot(data=DatasetForRProject, aes(x=Year, y=GeneralAverageWage, group=1)) +
+  geom_line()+
+  geom_point()
+```
+
+This seems like average has less point-to-point variation than the median wage category. 
+
+```{r InitialCorr}
+library(GGally)
+ggscatmat(DatasetForRProject, columns = 1:9,
+          alpha=0.1)
+```
+
+It seems like year, CPI, and average and median wages are all correlated. The ones not correlated are non-degree earners. In order to analysis on this, we will have to treat this as a time series.
+
